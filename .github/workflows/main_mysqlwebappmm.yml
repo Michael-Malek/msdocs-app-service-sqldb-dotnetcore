@@ -28,14 +28,6 @@ jobs:
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-
-      - name: dotnet install ef
-        run: dotnet tool install -g dotnet-ef
-
-      - name: dotnet bundle migration
-        run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate
-
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -61,5 +53,5 @@ jobs:
         with:
           app-name: 'MySqlWebAppMM'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1517634944A04C34A5BAAB5A3D621F3C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_00D6BE9E50404C2993A39EC11D7CB484 }}
           package: .
